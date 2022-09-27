@@ -13,6 +13,6 @@ app.use(express.urlencoded({ extended: false }));
 app.disable('x-powered-by');
 
 app.set('port', process.env.PORT || 4000);
-app.use(express.static(join(__dirname, '..', 'public')));
+app.use(express.static(join(__dirname, '..', 'client','build')));
 app.use(router);
 module.exports = { app };
