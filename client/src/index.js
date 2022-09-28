@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import SignUp from "./Components/signUp/signUp.jsx";
 import reportWebVitals from './reportWebVitals';
+import SignIn from "./Components/SignIn/SignIn";
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -21,7 +23,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/user/sign-in",
-    element:  <div>sign-in</div>
+    element: <SignIn />
   },
   {
     path: "/user/profile",

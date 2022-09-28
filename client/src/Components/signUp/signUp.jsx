@@ -22,6 +22,7 @@ function SignUp () {
             body: JSON.stringify(formData),
           }).then((data) => data.json())
           .then((data) => {
+            console.log(data);
             if(data.state == 'success'){
                 navigation('/user/profile');
             }

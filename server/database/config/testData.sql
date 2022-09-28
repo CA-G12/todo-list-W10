@@ -1,6 +1,6 @@
 BEGIN;
 INSERT INTO users (name, email, password) values 
- ('Mohammad', 'Mohammad@gmail.com', 'MohammadPassword'),
+ ('Mohammad', 'Mohammad@gmail.com', '$2a$08$mAkMJsk5sqRDZ40fOqvvheJI/OtGqZxJAZ.eyi8o.zdYbRWGMCob.'),
  ('Alan' , 'Alan@gmail.com', 'AlanPassword'),
  ('Ahmed', 'Ahmed@gmail.com', 'AhmedPassword');
 
