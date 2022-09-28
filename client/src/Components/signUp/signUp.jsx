@@ -22,7 +22,6 @@ function SignUp () {
             body: JSON.stringify(formData),
           }).then((data) => data.json())
           .then((data) => {
-            console.log(data);
             if(data.state == 'success'){
                 navigation('/user/profile');
             }
@@ -52,10 +51,6 @@ function SignUp () {
 <span class="psw">already have an account? <a href="/user/sign-in">Sign in</a></span>
 <span class="feedback" >{feedback}</span>
 <button type="submit" class="signUp"  onClick={getData}>Sign Up</button>
-<h1>{userName}</h1>
-<h1>{email}</h1>
-<h1>{password}</h1>
-<h1>{confirmPassword}</h1>
 </div>
 
 

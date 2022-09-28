@@ -1,16 +1,18 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 function SignIn() {
   const [ userData, setUserData ] = useState({ email:'', password: '' });
-
+  const navigation = useNavigate();
   const submitHandler = e => {
     e.preventDefault();
     axios.post("/user/sign-in", {
       email: userData.email, 
       password: userData.password,
     })
-    .then(data => console.log(data))
+    .then(()=> navigation('/user/profile'))
     .catch(err => console.log(err))
   }
 
