@@ -5,6 +5,7 @@ import App from './App';
 import SignUp from "./Components/signUp/signUp.jsx";
 import reportWebVitals from './reportWebVitals';
 import SignIn from "./Components/SignIn/SignIn";
+import Profile from "./Components/profile/profile";
 
 import {
   createBrowserRouter,
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/user/profile",
-    element:  <div>profile</div>
+    element:  <Profile/>
   },
 ]);
 

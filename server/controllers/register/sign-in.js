@@ -25,7 +25,6 @@ const signIn = (req, res, next) => {
                     } = data.rows[0];
 
                     bcrypt.compare(password, hashedpassword, (err, result) => {
-                        console.log(hashedpassword);
                         if (err) next(err);
                         if (!result) res.json({ message: 'invalid email or password', state: 'fail' });
                         else {
