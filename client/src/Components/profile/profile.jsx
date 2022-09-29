@@ -1,92 +1,144 @@
 import React from "react";
-import { useState , useEffect } from "react";
+import NavProfile from "./NavProfile";
+import "./Profile.css";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-function Profile () {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [img, setImg] = useState('');
-    const [userName, setUserName] = useState('');
-    const [tasks, setTasks] = useState([]);   
-    
-    const navigation = useNavigate();
-    const getData = () => {
-        fetch('/user/profile', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }).then((data) => data.json())
-          .then((data) => {
-            setUserName(data.name);
-            setImg(data.img);
-            setTasks(data.tasks);
-          }).catch((err)=>console.log(err))
-    }    
+function Profile() {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [img, setImg] = useState("");
+  const [userName, setUserName] = useState("");
+  const [tasks, setTasks] = useState([]);
 
-    const addTask = () => {
-        const taskData = {
-            title,
-            content,
+  const navigation = useNavigate();
+  const getData = () => {
+    fetch("/user/profile", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        setUserName(data.name);
+        setImg(data.img);
+        setTasks(data.tasks);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const addTask = () => {
+    const taskData = {
+      title,
+      content,
+    };
+    fetch("/user/add-task", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(taskData),
+    })
+      .then(() => getData())
+      .then(() => {
+        setTitle("");
+        setContent("");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const deleteTask = (id) => {
+    fetch(`/user/delete-task${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => getData())
+      .catch((err) => console.log(err));
+  };
+
+  const logOut = () => {
+    fetch("/user/sign-out", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => navigation("/user/sign-in"))
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getAllTasks = () => {
+    return tasks.map((task) => {
+      return (
+        <div className="card" key={tasks.id}>
+          <img src="" alt="img-random" />
+          <div className="card-content">
+            <h1 className="card-header">{task.title}</h1>
+            <p className="card-content">{task.content}</p>
+            <button className="card-btn" onClick={() => deleteTask(task.id)}>
+              Delete
+            </button>
+          </div>
+        </div>
+      );
+    });
+  };
+
+  return (
+    <>
+      <NavProfile
+      name={userName}
+        LogOut={
+          <button className="btn btn-primary" onClick={() => logOut()}>
+            LOGOUT
+          </button>
         }
-        fetch('/user/add-task', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body : JSON.stringify(taskData),
-          }).then(()=> getData()).then(()=>{
-            setTitle('');
-            setContent('');
-          }).catch((err) => console.log(err))
-    }
+      />
 
-    const deleteTask = (id) =>{
-        fetch(`/user/delete-task${id}`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }).then(()=> getData()).catch((err) => console.log(err))
-    }
+      <main className="main">
+        <div className="container">
+          <div id="add-card">
+            <input
+              type="text"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+              id="add-card-text"
+              name="add-card"
+              placeholder="Add Task..."
+              autofocus
+            />
 
-    const logOut = () =>{
-        fetch('/user/sign-out', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }).then(()=> navigation('/user/sign-in')).catch((err) => console.log(err))
-    }
+            <textarea
+              onChange={(e) => setContent(e.target.value)}
+              value={content}
+            ></textarea>
 
+            <button
+              id="add-card-button"
+              class="plus-button"
+              type="submit"
+              className="btn btn-primary"
+              onClick={addTask}
+            >
+              Add Task
+            </button>
+          </div>
 
-    useEffect(()=>{
-        getData()
-    },[])
+          {/* <h3>{userName}</h3> */}
 
-
-    const getAllTasks = ()=>{
-        return tasks.map(task => {
-            return <div key={tasks.id}><p onClick={() => deleteTask(task.id)} >X</p><h4>task.title</h4><p>{task.content}</p></div>
-        })
-    }    
-
-    return (
-                <div id="profile">
-                    {/* {getData()} */}
-                    <h3>{userName}</h3>
-                    <p  onClick={()=>logOut()} >log out</p>
-                    <div id="form">
-                        <input type="text" onChange={e => setTitle(e.target.value)} value={title} />
-                        <textarea name="" id="" cols="30" rows="10" onChange={e => setContent(e.target.value)} value={content}></textarea>
-                        <button type="submit" class="signUp"  onClick={addTask}>add Task</button>
-                    </div>
-                        {   
-                            getAllTasks()
-                        }
-                    
-                </div>
-            );
-
-  }
+          <div className="grid">
+            <div className="grid-item">{getAllTasks()}</div>
+          </div>
+        </div>
+      </main>
+    </>
+  );
+}
 
 export default Profile;
