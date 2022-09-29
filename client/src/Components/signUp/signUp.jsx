@@ -80,7 +80,7 @@ function SignUp () {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary" onClick={getData}>
+            <button type="button" className="btn btn-primary" onClick={getData}>
               Sign Up
             </button>
           </form>

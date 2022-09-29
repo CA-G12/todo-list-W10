@@ -1,6 +1,6 @@
 import React from 'react';
 import './Navbar.css'
-function NavProfile({ LogOut, username }) {
+function NavProfile({ LogOut, userName }) {
   return (
     <nav>
       <div className="container">
@@ -19,7 +19,7 @@ function NavProfile({ LogOut, username }) {
               alt="profile-photo"
             />
           </div>
-          <h4>{username}</h4>
+          <h4>{userName}</h4>
           <div>{LogOut}</div>
         </div>
       </div>

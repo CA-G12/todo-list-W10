@@ -76,12 +76,12 @@ function Profile() {
   const getAllTasks = () => {
     return tasks.map((task) => {
       return (
-        <div className="card" key={tasks.id}>
-          <img src="" alt="img-random" />
+        <div className="card wrapper" key={tasks.id}>
           <div className="card-content">
             <h1 className="card-header">{task.title}</h1>
-            <p className="card-content">{task.content}</p>
-            <button className="card-btn" onClick={() => deleteTask(task.id)}>
+            <div className="bar"></div>
+            <p className="card-description">{task.content}</p>
+            <button className="btn btn-primary" onClick={() => deleteTask(task.id)}>
               Delete
             </button>
           </div>
@@ -93,7 +93,7 @@ function Profile() {
   return (
     <>
       <NavProfile
-      name={userName}
+      userName={userName}
         LogOut={
           <button className="btn btn-primary" onClick={() => logOut()}>
             LOGOUT

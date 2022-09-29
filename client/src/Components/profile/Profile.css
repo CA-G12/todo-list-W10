@@ -12,7 +12,7 @@
     gap: 0.85rem;
 }
 
-input[type="text"] {
+#add-card input[type="text"] {
     border: none;
     border-bottom: 2px solid hsl(252, 75%, 60%);
     font-size: 1em;
@@ -21,13 +21,13 @@ input[type="text"] {
     margin: 24px 0px;
 }
 
-input[type="text"]:focus {
+#add-card input[type="text"]:focus {
     border: none;
     border-bottom: 2px solid hsl(252, 75%, 60%);
     outline: none;
 }
 
-textarea {
+#add-card textarea {
     width: 50%;
     height: 150px;
     padding: 8px 16px;
@@ -58,73 +58,46 @@ div#add-card {
     height: 50px;
 }
 .grid {
-    display: grid;
-    width: 114em;
-    grid-gap: 6rem;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    align-items: start;
+    margin-top: 32px;
 }
 .grid-item {
-    background: #fff;
-    border-radius: .4rem;
-    overflow: hidden;
-    box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
-    cursor: pointer;
-    transition: all .3s;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-.grid-item:hover {
-    transform: translateY(-0.5%);
-    box-shadow: 0 4rem 8rem;
-}
-.card-img {
-    display: block;
-    width: 100%;
-    height: 20rem;
-    object-fit: cover;
-}
-
-.card-content{
-    padding: 3rem;
-}
-
-.card-header {
-    font-size: 3rem;
-    font-weight: 500;
-    color: hsl(252, 75%, 60%);
-    margin-bottom: 1.5rem;
-}
-
-.card-text {
-    font-size: 1.6rem;
-    letter-spacing: 0.1rem;
-    line-height: 1.7;
-    color: black;
-    margin-bottom: 2.5rem;
-}
-
-.card-btn {
-    display: block;
-    width: 100%;
-    padding: 1.5rem;
-    font-size: 2rem;
+.card {
+    width: 23%;
+    margin: 16px 1%;
     text-align: center;
+}
+ .wrapper {
+    width: 380px;
+    padding: 30px;
+    background: hsl(252, 30%, 100%);
+    border-radius: 1rem;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+}
+h1.card-header{
     color: hsl(252, 75%, 60%);
-    background: #fff;
-    border: none;
-    border-radius: 0.4rem;
-    letter-spacing: 0.1rem;
+    word-break: break-all;
+    margin: 16px 0;
 }
 
-.card-btn span {
-    margin-left: 1rem;
-    transition: .2s;
+div.card-content {
+    padding: 8px;
+    width: 100%;
+    height: 100%;
 }
-
-.card-btn:hover,
-.card-btn:focus {
-    background: #c2cffc;
+.card-description {
+    height: 150px;
+    width: 80%;
+    margin: 16px auto;
+    word-break: break-all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.card-btn:hover span,
-.card-btn:focus span {
-    margin-left: 1.5rem;
+.btn{
+    margin-bottom: 16px;
 }
