@@ -1,4 +1,5 @@
 import React from "react";
+import "./signUp.css";
 import { useState , useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 function SignUp () {
@@ -34,29 +35,63 @@ function SignUp () {
     }
 
     return (
-<div id="form">
-<h1>sign up</h1>
-<input type="text" placeholder="your nickname" class="nickname" value={userName}
-    onChange={(e) => setUserName(e.target.value )}
-/>
-<input type="email" placeholder="your email"  class="email" value={email}
-    onChange={(e) => setEmail(e.target.value )}
-/>
-<input type="password" placeholder="your password" class="password" value={password}
-    onChange={(e) => setPassword(e.target.value )}
-/> 
-<input type="password" placeholder="repeat your password" class="repeatPassword" value={confirmPassword}
-    onChange={(e) => setConfirmPassword(e.target.value )}
-/>
-<span class="psw">already have an account? <a href="/user/sign-in">Sign in</a></span>
-<span class="feedback" >{feedback}</span>
-<button type="submit" class="signUp"  onClick={getData}>Sign Up</button>
-</div>
+      <div id="form" className="form-container">
+        <div className="wrapper">
+          <h1>SIGN UP</h1>
 
+          <form className="form">
+            <label className="text-bold">Name</label>
+            <div className="search-bar">
+              <input
+                type="text"
+                placeholder="Name"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+            </div>
 
+            <label class="text-bold">Email</label>
+            <div className="search-bar">
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
 
+            <label class="text-bold">Password</label>
+            <div className="search-bar">
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
 
+            <label class="text-bold">Confirm Password</label>
+            <div className="search-bar">
+              <input
+                type="password"
+                placeholder="Repeat Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
+
+            <button type="button" className="btn btn-primary" onClick={getData}>
+              Sign Up
+            </button>
+          </form>
+
+          <div className="sign-txt">
+            Already have an account? <a href="/user/sign-in">SIGN IN</a>
+            <span class="feedback">{feedback}</span>
+          </div>
+        </div>
+      </div>
     );
-  }
+}
 
 export default SignUp;

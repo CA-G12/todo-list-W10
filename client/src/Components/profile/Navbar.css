@@ -1,0 +1,38 @@
+/* navbar */
+nav {
+    width: 100%;
+    background: hsl(252, 30%, 100%);
+    padding: .7rem 0;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-bar {
+    background: hsl(252, 30%, 95%);
+    border-radius: 2rem;
+    padding:  0.6rem 1rem;
+}
+
+.search-bar input[type="search"] {
+    background: transparent;
+    width: 30vw;
+    margin-left: 1rem;
+    font-size: .9rem;
+    color: hsl(252, 30%, 17%);
+}
+nav .search-bar input[type="search"]::placeholder {
+    color: hsl(252, 15%, 65%);
+}
+
+nav .create {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
