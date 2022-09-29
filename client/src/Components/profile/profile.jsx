@@ -74,6 +74,7 @@ function Profile() {
   }, []);
 
   const getAllTasks = () => {
+    if(!tasks) navigation("/user/sign-in");
     return tasks.map((task) => {
       return (
         <div className="card wrapper" key={tasks.id}>
